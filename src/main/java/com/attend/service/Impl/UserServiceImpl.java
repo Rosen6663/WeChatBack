@@ -125,6 +125,7 @@ public class UserServiceImpl implements UserService {
         //判断今日是否签过到
             //没有，提醒签到再签退
         Check checkTodayNew=userMapper.selectTodyCheck(checkDTO.getId());
+
         if(checkTodayNew==null){
             return "请先签到，才可签退哦";
         }else{

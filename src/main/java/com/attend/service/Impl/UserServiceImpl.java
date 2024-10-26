@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
     }
 
     public String getById(Long id) {
-        String name = userMapper.getById(id);
-        return name;
+        String nickName = userMapper.getById(id);
+        return nickName;
     }
 
     public void update(UserRegisterDTO userRegisterDTO) {

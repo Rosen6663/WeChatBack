@@ -70,11 +70,11 @@ public class UserController {
     }
     //判断用户是否注册
     @GetMapping("/register/{id}")
-    @ApiOperation("根据id查询姓名是否存在,判断用户是否注册")
+    @ApiOperation("根据id查询用户名是否存在,判断用户是否注册")
     public Result<String> info(@PathVariable Long id) {
         log.info("根据id查询姓名是否存在,判断用户是否注册:{}",id);
-       String name = userService.getById(id);
-        return Result.success(name);
+         String nickName = userService.getById(id);
+        return Result.success(nickName);
     }
     //接收注册信息
     @PutMapping("/register")

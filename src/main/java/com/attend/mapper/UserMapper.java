@@ -25,7 +25,7 @@ public interface UserMapper {
     @Update("update users set nick_name=#{nickName},name=#{name},sex=#{sex},age=#{age},phone=#{phone},student_id=#{studentId},id_number=#{idNumber},college=#{college},major=#{major} where id=#{id}")
     void update(UserUpdateDTO userUpdateDTO);
 
-    @Select("select name from users where id=#{id}")
+    @Select("select nick_name from users where id=#{id}")
     String getById(Long id);
 
     @Update("update users set name=#{name}, sex=#{sex}, age=#{age}, phone=#{phone}, student_id=#{studentId}, id_number=#{idNumber}, college=#{college}, major=#{major} where id=#{id}")

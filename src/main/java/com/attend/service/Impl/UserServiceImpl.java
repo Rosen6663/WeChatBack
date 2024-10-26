@@ -140,8 +140,6 @@ public class UserServiceImpl implements UserService {
 
                 //提升经验
                     //查看时长
-
-
                     userMapper.chenkUpdateNew(check,checkTodayNew.getId());
                     Double a= userMapper.selectTimeD(checkDTO.getId());
                     log.info("时长{}",a);

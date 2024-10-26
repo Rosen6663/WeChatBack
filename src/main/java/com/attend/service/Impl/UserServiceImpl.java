@@ -44,15 +44,14 @@ public class UserServiceImpl implements UserService {
         User user;
         user = userMapper.getByOpenid(openid);
         if (user == null) {
-            String avatar = userLoginDTO.getAvatar();
-            String nickName = userLoginDTO.getNickName();
+//            String avatar = userLoginDTO.getAvatar();
+//            String nickName = userLoginDTO.getNickName();
             user = User.builder()
                     .openid(openid)
-                    .avatar(avatar)
-                    .nickName(nickName)
+//                    .avatar(avatar)
+//                    .nickName(nickName)
                     .createTime(LocalDateTime.now())
                     .build();
-            log.info("11111:{}",user);
             userMapper.insert(user);
         }
         user = userMapper.getByOpenid(openid);

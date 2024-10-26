@@ -2,8 +2,8 @@
 attend:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    host: sh-cynosdbmysql-grp-10v7uahe.sql.tencentcdb.com
-    port: 20141
+    host: 10.10.107.190
+    port: 3306
     database: springboot_demo
 # 配置自己的本机数据库用户名和密码
     username: root

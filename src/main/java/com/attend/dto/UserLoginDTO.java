@@ -15,8 +15,5 @@ public class UserLoginDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     @ApiModelProperty("微信授权码")
     private String code;
-    @ApiModelProperty("头像")
-    private String avatar;
-    @ApiModelProperty("昵称")
-    private String nickName;
+
 }

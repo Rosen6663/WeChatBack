@@ -16,7 +16,7 @@ public interface UserMapper {
     User getByOpenid(String openid);
 
     // 在 UserMapper 接口中
-    @Insert("INSERT INTO users (openid, avatar, nick_name, create_time) VALUES (#{openid}, #{avatar}, #{nickName}, #{createTime})")
+    @Insert("INSERT INTO users (openid ,create_time) VALUES (#{openid}, #{createTime})")
     void insert(User user);
 
     @Select("select * from users where id=#{id}")

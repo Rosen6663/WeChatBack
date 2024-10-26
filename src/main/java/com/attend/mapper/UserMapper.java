@@ -58,3 +58,4 @@ public interface UserMapper {
     @Update("UPDATE users SET experience = experience + IFNULL(#{jingyan}, 0) WHERE id = #{id}")
     void insertJingyan(Double jingyan,Long id);
 }
+//

@@ -15,20 +15,9 @@ public class UserRegisterDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     @ApiModelProperty("主键")
     private String id;
-    @ApiModelProperty("姓名")
-    private String name;
-    @ApiModelProperty("性别")
-    private String sex;
-    @ApiModelProperty("年龄")
-    private String age;
-    @ApiModelProperty("手机号")
-    private String phone;
-    @ApiModelProperty("学号")
-    private String studentId;
-    @ApiModelProperty("身份证")
-    private String idNumber;
-    @ApiModelProperty("学院")
-    private String college;
-    @ApiModelProperty("专业")
-    private String major;
+    @ApiModelProperty("昵称")
+    private String nickName;
+    @ApiModelProperty("头像")
+    private String avatar;
+
 }

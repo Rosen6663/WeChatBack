@@ -28,7 +28,7 @@ public interface UserMapper {
     @Select("select nick_name from users where id=#{id}")
     String getById(Long id);
 
-    @Update("update users set name=#{name}, sex=#{sex}, age=#{age}, phone=#{phone}, student_id=#{studentId}, id_number=#{idNumber}, college=#{college}, major=#{major} where id=#{id}")
+    @Update("update users set nick_name=#{nickName},avatar=#{avatar} where id=#{id}")
     void updateById(UserRegisterDTO userRegisterDTO);
 
     @Select("SELECT * FROM checks WHERE user_id = #{id} AND DATE(check_in_time) = CURDATE()  ORDER BY check_in_time DESC LIMIT 1; ")

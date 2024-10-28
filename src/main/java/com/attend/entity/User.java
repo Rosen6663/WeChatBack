@@ -38,7 +38,7 @@ public class User implements Serializable {
     //头像
     private String avatar;
     //经验
-    private Integer experience;
+    private Double experience;
     //注册时间
     private LocalDateTime createTime;
 }

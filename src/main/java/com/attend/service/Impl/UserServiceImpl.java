@@ -127,6 +127,7 @@ public class UserServiceImpl implements UserService {
         Check checkTodayNew=userMapper.selectTodyCheck(checkDTO.getId());
 
         if(checkTodayNew==null){
+
             return "今日请先签到，才可签退哦";
         }else{
             //签过，判断最新一条是否签退过

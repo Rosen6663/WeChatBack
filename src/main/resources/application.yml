@@ -2,6 +2,8 @@ server:
   port: 80
 # mysql数据库
 spring:
+  jackson:
+    time-zone: Asia/Shanghai
   profiles:
     active: dev
   main:

@@ -33,13 +33,13 @@ public interface UserMapper {
 
     @Select("SELECT * FROM checks WHERE user_id = #{id} AND DATE(check_in_time) = CURDATE()  ORDER BY check_in_time DESC LIMIT 1; ")
     Check selectTodyCheck(Long id);
-    @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES (#{checkInTime}, #{checkInLocation}, 1, #{userId})")
+    @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES ( now(), #{checkInLocation}, 1, #{userId})")
     void chenkInInsert(Check check);
     @Select("SELECT COUNT(*) FROM checks WHERE user_id = #{id} AND DATE(check_in_time) = CURDATE() ")
     Integer chenkTodyCount(Long id);
-    @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES (#{checkInTime}, #{checkInLocation}, #{roundNumber}, #{userId})")
+    @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES ( now(), #{checkInLocation}, #{roundNumber}, #{userId})")
     void chenkInInsertNoNew(Check check);
-    @Update("UPDATE checks SET check_out_time = #{check.checkOutTime},check_out_location=#{check.checkOutLocation} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
+    @Update("UPDATE checks SET check_out_time = now(),check_out_location=#{check.checkOutLocation} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
     void chenkUpdateNew(Check check,Integer id);
     @Select("SELECT \n" +
             "    TIMESTAMPDIFF(MINUTE, check_in_time, check_out_time) AS time_difference_minutes,\n" +

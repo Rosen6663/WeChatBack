@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
     @Select("select * from users where openid=#{openid}")
@@ -41,6 +43,12 @@ public interface UserMapper {
     void chenkInInsertNoNew(Check check);
     @Update("UPDATE checks SET check_out_time = now(),check_out_location=#{check.checkOutLocation} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
     void chenkUpdateNew(Check check,Integer id);
+
+    /**
+     * 查询最新一条签到签退信息
+     * @param id
+     * @return
+     */
     @Select("SELECT \n" +
             "    TIMESTAMPDIFF(MINUTE, check_in_time, check_out_time) AS time_difference_minutes,\n" +
             "    check_in_time,\n" +
@@ -57,5 +65,14 @@ public interface UserMapper {
     Double selectTimeD(Long id);
     @Update("UPDATE users SET experience = experience + IFNULL(#{jingyan}, 0) WHERE id = #{id}")
     void insertJingyan(Double jingyan,Long id);
+
+    /**
+     * 查询全部打卡信息
+     * @param id
+     * @return
+     */
+    @Select("select * from checks where user_id=#{id}")
+    List<Check> getChecksById(Long id);
+
 }
 //

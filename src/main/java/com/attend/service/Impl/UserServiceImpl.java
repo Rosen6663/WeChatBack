@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -159,6 +160,12 @@ public class UserServiceImpl implements UserService {
 
         }
 
+    }
+
+    @Override
+    public List<Check> GetChecksByID(Long id) {
+
+        return userMapper.getChecksById(id);
     }
 
     //    public String getOpenid(String code) {

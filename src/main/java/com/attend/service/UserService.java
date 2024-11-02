@@ -6,6 +6,9 @@ import com.attend.dto.UserLoginDTO;
 import com.attend.dto.UserRegisterDTO;
 import com.attend.dto.UserUpdateDTO;
 import com.attend.entity.User;
+import com.attend.entity.Check;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -23,4 +26,6 @@ public interface UserService {
     String checkIn(CheckDTO checkDTO);
     //签退
     String checkOut(CheckDTO checkDTO);
+
+    List<Check> GetChecksByID(Long id);
 }

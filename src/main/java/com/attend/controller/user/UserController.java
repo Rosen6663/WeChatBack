@@ -11,7 +11,6 @@ import com.attend.properties.JwtProperties;
 import com.attend.result.Result;
 import com.attend.service.UserService;
 import com.attend.utils.JwtUtil;
-import com.attend.vo.CheckGetTodayVO;
 import com.attend.vo.UserLoginVO;
 import com.attend.entity.Check;
 import io.swagger.annotations.Api;
@@ -122,26 +121,28 @@ public class UserController {
         return Result.success(resulet);
     }
 
-    @ApiOperation("获取今日签到签退信息")
+    @ApiOperation("获取全部打卡信息")
     @GetMapping("/checkGetToday/{id}")
-    public Result<CheckGetTodayVO> checkGetToday(@PathVariable Long id) {
+    public Result<List<Check>> checkGetToday(@PathVariable Long id) {
         log.info("用户{}正在获取今日打卡信息",id);
         List<Check> checks=userService.GetChecksByID(id);
         log.info("查询的打卡信息为:{}",checks);
-
-        Check check=userMapper.selectTodyCheck(id);
-        log.info("查看最新的一条签到信息{}",check);
-
-        CheckGetTodayVO checkGetTodayVO= CheckGetTodayVO.builder()
-                .check(check)
-                .checks(checks)
-                .build();
-
-        return Result.success(checkGetTodayVO);
+        return Result.success(checks);
     }
+    @ApiOperation("获取最新一条打卡信息")
+    @GetMapping("/checkNew/{id}")
+    public Result<Check> checkNew(@PathVariable Long id) {
+        log.info("用户{}正在获取今日打卡信息",id);
+        Check check=userMapper.selectTodyCheck(id);
+        log.info("查询的最新打卡信息为:{}",check);
+        return Result.success(check);
+    }
+
     /**
      * 排名
      */
+
+
 
 
 

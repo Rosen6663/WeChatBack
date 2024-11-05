@@ -2,10 +2,7 @@ package com.attend.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.attend.constant.MessageConstant;
-import com.attend.dto.CheckDTO;
-import com.attend.dto.UserLoginDTO;
-import com.attend.dto.UserRegisterDTO;
-import com.attend.dto.UserUpdateDTO;
+import com.attend.dto.*;
 import com.attend.entity.Check;
 import com.attend.entity.User;
 import com.attend.exception.LoginFailedException;
@@ -166,6 +163,12 @@ public class UserServiceImpl implements UserService {
     public List<Check> GetChecksByID(Long id) {
 
         return userMapper.getChecksById(id);
+    }
+
+    @Override
+    public List<Check> GetChecksByTime(CheckByTimeDTO checkByTimeDTO) {
+        log.info("开始时间{}",checkByTimeDTO.getStartTime());
+        return userMapper.selectCheckByTime(checkByTimeDTO.getId(),checkByTimeDTO.getStartTime(),checkByTimeDTO.getEndTime());
     }
 
     //    public String getOpenid(String code) {

@@ -1,16 +1,14 @@
 package com.attend.controller.user;
 
 import com.attend.constant.JwtClaimsConstant;
-import com.attend.dto.CheckDTO;
-import com.attend.dto.UserLoginDTO;
-import com.attend.dto.UserRegisterDTO;
-import com.attend.dto.UserUpdateDTO;
+import com.attend.dto.*;
 import com.attend.entity.User;
 import com.attend.mapper.UserMapper;
 import com.attend.properties.JwtProperties;
 import com.attend.result.Result;
 import com.attend.service.UserService;
 import com.attend.utils.JwtUtil;
+import com.attend.vo.AllRankingVO;
 import com.attend.vo.UserLoginVO;
 import com.attend.entity.Check;
 import io.swagger.annotations.Api;
@@ -122,14 +120,14 @@ public class UserController {
     }
 
     @ApiOperation("获取全部打卡信息")
-    @GetMapping("/checkGetToday/{id}")
-    public Result<List<Check>> checkGetToday(@PathVariable Long id) {
+    @GetMapping("/checkGetAll/{id}")
+    public Result<List<Check>> checkGetAll(@PathVariable Long id) {
         log.info("用户{}正在获取今日打卡信息",id);
         List<Check> checks=userService.GetChecksByID(id);
         log.info("查询的打卡信息为:{}",checks);
         return Result.success(checks);
     }
-    @ApiOperation("获取最新一条打卡信息")
+    @ApiOperation("获取今天最新一条打卡信息")
     @GetMapping("/checkNew/{id}")
     public Result<Check> checkNew(@PathVariable Long id) {
         log.info("用户{}正在获取今日打卡信息",id);
@@ -138,10 +136,23 @@ public class UserController {
         return Result.success(check);
     }
 
+    @ApiOperation("通过时间获取打卡信息")
+    @PostMapping("/checkGetByTime")
+    public Result<List<Check>> checkGetByTime(@RequestBody CheckByTimeDTO checkByTimeDTO) {
+        log.info("用户正在按照时间查询{}打卡信息",checkByTimeDTO);
+        List<Check> checks=userService.GetChecksByTime(checkByTimeDTO);
+        log.info("按照时间查询的打卡信息为:{}",checks);
+        return Result.success(checks);
+    }
     /**
      * 排名
      */
+    @ApiOperation("获取全部排名")
+    @GetMapping("/GetRanking")
+    public Result<AllRankingVO> getExperence() {
 
+        return null;
+    }
 
 
 

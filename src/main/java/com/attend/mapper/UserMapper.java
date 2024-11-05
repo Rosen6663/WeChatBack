@@ -1,15 +1,14 @@
 package com.attend.mapper;
 
 
+import com.attend.dto.CheckByTimeDTO;
 import com.attend.dto.UserRegisterDTO;
 import com.attend.dto.UserUpdateDTO;
 import com.attend.entity.Check;
 import com.attend.entity.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper
@@ -74,5 +73,6 @@ public interface UserMapper {
     @Select("select * from checks where user_id=#{id}")
     List<Check> getChecksById(Long id);
 
+
+    List<Check> selectCheckByTime(@Param("id") String id, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
 }
-//

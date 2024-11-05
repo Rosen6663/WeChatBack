@@ -1,10 +1,7 @@
 package com.attend.service;
 
 
-import com.attend.dto.CheckDTO;
-import com.attend.dto.UserLoginDTO;
-import com.attend.dto.UserRegisterDTO;
-import com.attend.dto.UserUpdateDTO;
+import com.attend.dto.*;
 import com.attend.entity.User;
 import com.attend.entity.Check;
 
@@ -28,4 +25,6 @@ public interface UserService {
     String checkOut(CheckDTO checkDTO);
 
     List<Check> GetChecksByID(Long id);
+
+    List<Check> GetChecksByTime(CheckByTimeDTO checkByTimeDTO);
 }

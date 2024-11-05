@@ -6,6 +6,7 @@ import com.attend.dto.UserRegisterDTO;
 import com.attend.dto.UserUpdateDTO;
 import com.attend.entity.Check;
 import com.attend.entity.User;
+import com.attend.vo.RankingUser;
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;
@@ -23,7 +24,7 @@ public interface UserMapper {
     @Select("select * from users where id=#{id}")
     User getInfo(Long id);
 
-    @Update("update users set nick_name=#{nickName},name=#{name},sex=#{sex},age=#{age},phone=#{phone},student_id=#{studentId},id_number=#{idNumber},college=#{college},major=#{major} where id=#{id}")
+    @Update("update users set nick_name=#{nickName} where id=#{id}")
     void update(UserUpdateDTO userUpdateDTO);
 
     @Select("select nick_name from users where id=#{id}")
@@ -75,4 +76,6 @@ public interface UserMapper {
 
 
     List<Check> selectCheckByTime(@Param("id") String id, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
+    @Select("SELECT * FROM users ORDER BY experience DESC;")
+    List<User> selectUserById();
 }

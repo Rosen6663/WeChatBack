@@ -9,6 +9,7 @@ import com.attend.result.Result;
 import com.attend.service.UserService;
 import com.attend.utils.JwtUtil;
 import com.attend.vo.AllRankingVO;
+import com.attend.vo.RankingUser;
 import com.attend.vo.UserLoginVO;
 import com.attend.entity.Check;
 import io.swagger.annotations.Api;
@@ -20,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RestController("userController")
 @RequestMapping("/user/user")
@@ -149,9 +152,26 @@ public class UserController {
      */
     @ApiOperation("获取全部排名")
     @GetMapping("/GetRanking")
-    public Result<AllRankingVO> getExperence() {
+    public Result<List<RankingUser>> getExperence() {
 
-        return null;
+        //获取全部人员排名和信息
+        List<User> users =userMapper.selectUserById();
+        log.info("查询的用户为；{}",users);
+        // 使用IntStream.range()创建一个从1开始的整数流，然后将其映射到users集合的索引上
+        List<RankingUser> rankingUsers = IntStream.range(1, users.size() + 1)
+                .mapToObj(index -> {
+                    User user = users.get(index - 1); // 因为索引是从0开始的，所以需要减1
+                    return RankingUser.builder()
+                            .user(user)
+                            .rank(index)
+                            .build();
+                })
+                .collect(Collectors.toList());
+        log.info("排名为:{}",rankingUsers);
+
+
+
+        return Result.success(rankingUsers);
     }
 
 

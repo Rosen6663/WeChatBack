@@ -17,20 +17,4 @@ public class UserUpdateDTO implements Serializable {
     private Long id;
     @ApiModelProperty("昵称")
     private String nickName;
-    @ApiModelProperty("姓名")
-    private String name;
-    @ApiModelProperty("性别")
-    private String sex;
-    @ApiModelProperty("年龄")
-    private String age;
-    @ApiModelProperty("手机号")
-    private String phone;
-    @ApiModelProperty("学号")
-    private String studentId;
-    @ApiModelProperty("身份证号")
-    private String idNumber;
-    @ApiModelProperty("学院")
-    private String college;
-    @ApiModelProperty("专业")
-    private String major;
 }

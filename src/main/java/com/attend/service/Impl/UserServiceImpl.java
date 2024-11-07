@@ -167,8 +167,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Check> GetChecksByTime(CheckByTimeDTO checkByTimeDTO) {
-        log.info("开始时间{}",checkByTimeDTO.getStartTime());
-        return userMapper.selectCheckByTime(checkByTimeDTO.getId(),checkByTimeDTO.getStartTime(),checkByTimeDTO.getEndTime());
+        log.info("开始时间{}",checkByTimeDTO.getSelectDate());
+        return userMapper.selectCheckByTime(checkByTimeDTO.getId(),checkByTimeDTO.getSelectDate());
     }
 
     //    public String getOpenid(String code) {

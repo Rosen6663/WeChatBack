@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,10 +13,9 @@ import java.time.LocalDateTime;
 public class CheckByTimeDTO implements Serializable {
     @ApiModelProperty("查询用户的id")
     private String id;
-    @ApiModelProperty("开始时间")
-    private LocalDateTime startTime; // 签到时间
-    @ApiModelProperty("结束时间")
-    private LocalDateTime endTime; // 签退时间
+    @ApiModelProperty("查询日期")
+    private LocalDate selectDate; // 签到时间
+
 
 
 }

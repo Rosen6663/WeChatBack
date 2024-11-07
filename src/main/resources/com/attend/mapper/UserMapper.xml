@@ -6,16 +6,16 @@
 <!--        insert into user (openid, avatar, nick_name,create_time)-->
 <!--        values (#{openid}, #{avatar},#{nickName}, #{createTime})-->
 <!--    </insert>-->
-    <select id="selectCheckByTime" resultType="com.attend.entity.Check">
-        select * from checks
-       <where>
-             <if test="id !=null">
-                 user_id=#{id}
-             </if>
-            <if test="startTime!=null and endTime!=null">
-                and check_in_time between #{startTime} and #{endTime}
-            </if>
-       </where>
+<!--    <select id="selectCheckByTime" resultType="com.attend.entity.Check">-->
+<!--        select * from checks-->
+<!--       <where>-->
+<!--             <if test="id !=null">-->
+<!--                 user_id=#{id}-->
+<!--             </if>-->
+<!--            <if test="startTime!=null and endTime!=null">-->
+<!--                and check_in_time between #{startTime} and #{endTime}-->
+<!--            </if>-->
+<!--       </where>-->
 
-    </select>
+<!--    </select>-->
 </mapper>

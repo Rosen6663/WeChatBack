@@ -9,6 +9,7 @@ import com.attend.entity.User;
 import com.attend.vo.RankingUser;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -74,8 +75,10 @@ public interface UserMapper {
     @Select("select * from checks where user_id=#{id}")
     List<Check> getChecksById(Long id);
 
+    @Select("SELECT * FROM checks WHERE user_id=#{id} AND DATE(check_in_time) = DATE(#{selectDate})")
+    List<Check> selectCheckByTime(String id, LocalDate selectDate);
 
-    List<Check> selectCheckByTime(@Param("id") String id, @Param("startTime") LocalDateTime startTime, @Param("endTime") LocalDateTime endTime);
     @Select("SELECT * FROM users ORDER BY experience DESC;")
     List<User> selectUserById();
+
 }

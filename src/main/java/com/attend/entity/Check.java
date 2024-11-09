@@ -29,4 +29,6 @@ public class Check implements Serializable {
         private Integer roundNumber; // 第几轮
         @ApiModelProperty("签到用户id")
         private Long userId;
+        @ApiModelProperty("获得经验")
+        private Double experience;
 }

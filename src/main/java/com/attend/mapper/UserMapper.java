@@ -42,7 +42,7 @@ public interface UserMapper {
     Integer chenkTodyCount(Long id);
     @Insert("INSERT INTO checks (check_in_time, check_in_location, round_number, user_id) VALUES ( now(), #{checkInLocation}, #{roundNumber}, #{userId})")
     void chenkInInsertNoNew(Check check);
-    @Update("UPDATE checks SET check_out_time = now(),check_out_location=#{check.checkOutLocation} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
+    @Update("UPDATE checks SET check_out_time = now(),check_out_location=#{check.checkOutLocation},experience=#{check.experience} WHERE user_id = #{check.userId} AND DATE(check_in_time) = CURDATE() AND id = #{id}")
     void chenkUpdateNew(Check check,Integer id);
 
     /**
@@ -80,5 +80,6 @@ public interface UserMapper {
 
     @Select("SELECT * FROM users ORDER BY experience DESC;")
     List<User> selectUserById();
-
+    @Update("update checks set experience=#{v} where id=#{id}")
+    void updateJingyan(double v, Integer id);
 }

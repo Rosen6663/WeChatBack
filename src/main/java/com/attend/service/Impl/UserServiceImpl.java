@@ -148,6 +148,7 @@ public class UserServiceImpl implements UserService {
                     BigDecimal roundedJingyan = BigDecimal.valueOf(jingyan).setScale(4, RoundingMode.HALF_UP);
                     log.info("添加经验{}",roundedJingyan.doubleValue());
                     userMapper.insertJingyan(roundedJingyan.doubleValue(),checkDTO.getId());
+                    userMapper.updateJingyan(roundedJingyan.doubleValue(),checkTodayNew.getId());
                     //添加经验
                 return "签退成功,添加"+roundedJingyan.doubleValue()+"经验";
             }else{

@@ -9,6 +9,7 @@ import com.attend.result.Result;
 import com.attend.service.UserService;
 import com.attend.utils.JwtUtil;
 import com.attend.vo.AllRankingVO;
+import com.attend.vo.CheckByTimeVO;
 import com.attend.vo.RankingUser;
 import com.attend.vo.UserLoginVO;
 import com.attend.entity.Check;
@@ -141,11 +142,16 @@ public class UserController {
 
     @ApiOperation("通过时间获取打卡信息")
     @PostMapping("/checkGetByTime")
-    public Result<List<Check>> checkGetByTime(@RequestBody CheckByTimeDTO checkByTimeDTO) {
+    public Result<CheckByTimeVO> checkGetByTime(@RequestBody CheckByTimeDTO checkByTimeDTO) {
         log.info("用户正在按照时间查询{}打卡信息",checkByTimeDTO);
         List<Check> checks=userService.GetChecksByTime(checkByTimeDTO);
         log.info("按照时间查询的打卡信息为:{}",checks);
-        return Result.success(checks);
+        CheckByTimeVO build = CheckByTimeVO.builder()
+                .checkList(checks)
+                .num(checks.size())
+                .build();
+
+        return Result.success(build);
     }
     /**
      * 排名
@@ -157,7 +163,7 @@ public class UserController {
         //获取全部人员排名和信息
         List<User> users =userMapper.selectUserById();
         log.info("查询的用户为；{}",users);
-        // 使用IntStream.range()创建一个从1开始的整数流，然后将其映射到users集合的索引上
+
         List<RankingUser> rankingUsers = IntStream.range(1, users.size() + 1)
                 .mapToObj(index -> {
                     User user = users.get(index - 1); // 因为索引是从0开始的，所以需要减1

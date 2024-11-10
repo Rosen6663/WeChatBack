@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -157,27 +159,37 @@ public class UserController {
      * 排名
      */
     @ApiOperation("获取全部排名")
-    @GetMapping("/GetRanking")
-    public Result<List<RankingUser>> getExperence() {
+    @GetMapping("/GetRanking/{id}")
+    public Result<AllRankingVO> getExperence(@PathVariable Long id) {
+        // 获取全部人员排名和信息
+        List<User> users = userMapper.selectUserRank();
+        log.info("查询的所有用户；{}", users);
 
-        //获取全部人员排名和信息
-        List<User> users =userMapper.selectUserById();
-        log.info("查询的用户为；{}",users);
+        // 使用AtomicLong来存储number的值
+        AtomicLong number = new AtomicLong();
 
-        List<RankingUser> rankingUsers = IntStream.range(1, users.size() + 1)
+        List<RankingUser> rankingUsers = IntStream.range(0, users.size())
                 .mapToObj(index -> {
-                    User user = users.get(index - 1); // 因为索引是从0开始的，所以需要减1
+                    User user = users.get(index);
+                    if (user.getId().equals(id)) {
+                        number.set(index + 1); // 因为排名是从1开始的，所以加1
+                    }
                     return RankingUser.builder()
                             .user(user)
-                            .rank(index)
+                            .rank(index + 1)
                             .build();
                 })
                 .collect(Collectors.toList());
-        log.info("排名为:{}",rankingUsers);
 
+        log.info("排名为: {}", rankingUsers);
+        log.info("查询排名的用户为: {}", id);
 
+        AllRankingVO allRankingVO = AllRankingVO.builder()
+                .rankingUsers(rankingUsers)
+                .num(number.get())
+                .build();
 
-        return Result.success(rankingUsers);
+        return Result.success(allRankingVO);
     }
 
 

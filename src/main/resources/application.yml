@@ -27,7 +27,7 @@ spring:
 #    username: ${MYSQL_USERNAME}
 #    password: ${MySQL_PASSWORD}
 #  mvc:
-#    view:
+#    view:q
 #      suffix: .html
 #      prefix: /
 

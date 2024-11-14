@@ -78,7 +78,7 @@ public interface UserMapper {
     @Select("SELECT * FROM checks WHERE user_id=#{id} AND DATE(check_in_time) = DATE(#{selectDate})")
     List<Check> selectCheckByTime(String id, LocalDate selectDate);
 
-    @Select("SELECT * FROM users ORDER BY experience DESC;")
+    @Select("SELECT * FROM users where nick_name IS NOT NULL ORDER BY experience DESC ;")
     List<User> selectUserRank();
     @Update("update checks set experience=#{v} where id=#{id}")
     void updateJingyan(double v, Integer id);

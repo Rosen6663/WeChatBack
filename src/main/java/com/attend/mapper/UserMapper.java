@@ -25,7 +25,6 @@ public interface UserMapper {
     @Select("select * from users where id=#{id}")
     User getInfo(Long id);
 
-    @Update("update users set nick_name=#{nickName} where id=#{id}")
     void update(UserUpdateDTO userUpdateDTO);
 
     @Select("select nick_name from users where id=#{id}")

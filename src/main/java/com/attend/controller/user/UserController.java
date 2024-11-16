@@ -101,8 +101,11 @@ public class UserController {
     @ApiOperation("更新用户信息")
     public Result<String> update(@RequestBody UserUpdateDTO userUpdateDTO) {
         log.info("更新用户信息:{}",userUpdateDTO);
+        if(userUpdateDTO.getAvatar()==null&&userUpdateDTO.getTelephone()==null&&userUpdateDTO.getNickName()==null){
+            return Result.success("未进行任何修改");
+        }
         userService.update(userUpdateDTO);
-        return Result.success();
+        return Result.success("修改成功");
     }
 
     /**

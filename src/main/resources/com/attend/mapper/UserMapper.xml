@@ -6,16 +6,19 @@
 <!--        insert into user (openid, avatar, nick_name,create_time)-->
 <!--        values (#{openid}, #{avatar},#{nickName}, #{createTime})-->
 <!--    </insert>-->
-<!--    <select id="selectCheckByTime" resultType="com.attend.entity.Check">-->
-<!--        select * from checks-->
-<!--       <where>-->
-<!--             <if test="id !=null">-->
-<!--                 user_id=#{id}-->
-<!--             </if>-->
-<!--            <if test="startTime!=null and endTime!=null">-->
-<!--                and check_in_time between #{startTime} and #{endTime}-->
-<!--            </if>-->
-<!--       </where>-->
-
-<!--    </select>-->
+    <update id="update" parameterType="com.attend.dto.UserUpdateDTO">
+        update users
+        <trim prefix="SET " suffixOverrides=",">
+            <if test="nickName != null">
+                nick_name = #{nickName},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar},
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone},
+            </if>
+        </trim>
+        where id = #{id}
+    </update>
 </mapper>

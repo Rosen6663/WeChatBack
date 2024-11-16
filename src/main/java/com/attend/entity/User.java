@@ -26,4 +26,6 @@ public class User implements Serializable {
     private Double experience;
     //注册时间
     private LocalDateTime createTime;
+
+    private String telephone;
 }

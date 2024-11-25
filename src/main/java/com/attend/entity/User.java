@@ -28,4 +28,6 @@ public class User implements Serializable {
     private LocalDateTime createTime;
 
     private String telephone;
+
+    private Integer Integral;
 }

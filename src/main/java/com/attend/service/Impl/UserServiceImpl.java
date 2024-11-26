@@ -143,7 +143,7 @@ public class UserServiceImpl implements UserService {
                     Double a= userMapper.selectTimeD(checkDTO.getId());
                     log.info("时长{}",a);
 
-                    double jingyan = (a / 30) * 1.5; // 计算经验值
+                    double jingyan = (a / 30) * 2; // 计算经验值
 
                     BigDecimal roundedJingyan = BigDecimal.valueOf(jingyan).setScale(4, RoundingMode.HALF_UP);
                     log.info("添加经验{}",roundedJingyan.doubleValue());

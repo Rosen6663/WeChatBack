@@ -7,7 +7,11 @@ create table users
     avatar      varchar(500)                        null,
     experience  double    default 0                 null,
     create_time timestamp default CURRENT_TIMESTAMP not null,
-    列_name     int       default 0                 null comment 'type'
+    type        int       default 0                 null,
+    telephone   varchar(11)                         null,
+    Integral    int       default 0                 null,
+    constraint idx_user_telephone
+        unique (telephone)
 );
 
 create table checks
@@ -27,5 +31,8 @@ create table checks
 
 create index user_id
     on checks (user_id);
+
+create index idx_user_name
+    on users (nick_name);
 
 

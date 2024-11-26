@@ -1,13 +1,13 @@
 # mysql配置
 attend:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    host: 10.10.107.190
-    port: 3306
-    database: springboot_demo
+    driver-class-name: org.postgresql.Driver
+    host: 113.44.203.30
+    port: 5432
+    database: erp
 # 配置自己的本机数据库用户名和密码
-    username: root
-    password: Maker2024
+    username: erp
+    password: erp@6664
 #  redis:
 #    host: 10.15.107.211
 #    port: 6379

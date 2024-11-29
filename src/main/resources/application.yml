@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
 # mysql数据库
 spring:
   jackson:
@@ -52,9 +52,11 @@ attend:
     admin-ttl: 720000000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    #用户
     user-secret-key: itshuo
     user-ttl: 7200000
     user-token-name: authentication
+
   alioss:
     endpoint: ${attend.alioss.endpoint}
     access-key-id: ${attend.alioss.access-key-id}

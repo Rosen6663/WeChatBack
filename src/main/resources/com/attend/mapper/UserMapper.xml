@@ -6,7 +6,7 @@
 <!--        insert into user (openid, avatar, nick_name,create_time)-->
 <!--        values (#{openid}, #{avatar},#{nickName}, #{createTime})-->
 <!--    </insert>-->
-    <update id="update" parameterType="com.attend.dto.UserUpdateDTO">
+    <update id="update" parameterType="com.attend.dto.user.UserUpdateDTO">
         update users
         <trim prefix="SET " suffixOverrides=",">
             <if test="nickName != null">

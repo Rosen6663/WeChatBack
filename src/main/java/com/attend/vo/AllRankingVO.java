@@ -16,6 +16,4 @@ import java.util.List;
 public class AllRankingVO implements Serializable {
     List<RankingUser> rankingUsers;
     Long num;
-
-
 }

@@ -1,7 +1,7 @@
 package com.attend.service;
 
 
-import com.attend.dto.*;
+import com.attend.dto.user.*;
 import com.attend.entity.User;
 import com.attend.entity.Check;
 

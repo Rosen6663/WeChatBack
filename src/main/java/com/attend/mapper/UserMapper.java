@@ -1,16 +1,13 @@
 package com.attend.mapper;
 
 
-import com.attend.dto.CheckByTimeDTO;
-import com.attend.dto.UserRegisterDTO;
-import com.attend.dto.UserUpdateDTO;
+import com.attend.dto.user.UserRegisterDTO;
+import com.attend.dto.user.UserUpdateDTO;
 import com.attend.entity.Check;
 import com.attend.entity.User;
-import com.attend.vo.RankingUser;
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 //mysql
 //@Mapper

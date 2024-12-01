@@ -1,4 +1,4 @@
-package com.attend.dto;
+package com.attend.dto.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -6,7 +6,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @ApiModel(description = "用户按时间打卡")

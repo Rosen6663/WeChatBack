@@ -1,7 +1,7 @@
 package com.attend.controller.user;
 
 import com.attend.constant.JwtClaimsConstant;
-import com.attend.dto.*;
+import com.attend.dto.user.*;
 import com.attend.entity.User;
 import com.attend.mapper.UserMapper;
 import com.attend.properties.JwtProperties;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

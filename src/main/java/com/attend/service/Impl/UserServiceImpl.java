@@ -2,7 +2,7 @@ package com.attend.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.attend.constant.MessageConstant;
-import com.attend.dto.*;
+import com.attend.dto.user.*;
 import com.attend.entity.Check;
 import com.attend.entity.User;
 import com.attend.exception.LoginFailedException;

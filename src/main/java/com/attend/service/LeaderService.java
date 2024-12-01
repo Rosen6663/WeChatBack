@@ -1,8 +1,8 @@
 package com.attend.service;
 
-import com.attend.dto.LeaderLoginDTO;
-import com.attend.entity.Leader;
+import com.attend.dto.leader.LeaderLoginDTO;
+import com.attend.entity.Admin;
 
 public interface LeaderService {
-    Leader login(LeaderLoginDTO loginDTO);
+    Admin login(LeaderLoginDTO loginDTO);
 }

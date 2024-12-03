@@ -2,6 +2,7 @@ package com.attend.controller.user;
 
 import com.attend.constant.JwtClaimsConstant;
 import com.attend.dto.user.*;
+import com.attend.entity.CheckElectives;
 import com.attend.entity.User;
 import com.attend.mapper.UserMapper;
 import com.attend.properties.JwtProperties;
@@ -196,9 +197,17 @@ public class UserController {
     @PostMapping("/xuanxiukeCheck")
     public Result<String> xuanxiukeCheck(@RequestBody XuanxiukeCheckByDTO xuanxiukeCheckByDTO) {
         log.info("用户{}",xuanxiukeCheckByDTO);
-        userService.insertElectivesCheck(xuanxiukeCheckByDTO);
+        //查询今日是否有记录
+        CheckElectives checkElectives=userMapper.selectElectivesCheck(xuanxiukeCheckByDTO.getUserId());
+        if(checkElectives==null){
+            //插入记录+添加经验
+            userService.insertElectivesCheck(xuanxiukeCheckByDTO);
+            userMapper.updateExperienceByElectives(xuanxiukeCheckByDTO.getUserId());
+            return Result.success("打卡成功");
+        }else{
+            return Result.success("已经打过卡了");
+        }
 
-        return Result.success("打卡成功");
     }
 
 

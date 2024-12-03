@@ -5,6 +5,7 @@ import com.attend.dto.user.UserRegisterDTO;
 import com.attend.dto.user.UserUpdateDTO;
 import com.attend.dto.user.XuanxiukeCheckByDTO;
 import com.attend.entity.Check;
+import com.attend.entity.CheckElectives;
 import com.attend.entity.User;
 import org.apache.ibatis.annotations.*;
 
@@ -155,4 +156,9 @@ public interface UserMapper {
     void updateJingyan(double v, Integer id);
     @Insert("insert into check_electives(user_id, location, image,check_time) values (#{userId},#{location},#{image},now())")
     void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO);
+    @Select("select * from check_electives where user_id=#{userId} and DATE_TRUNC('day', check_time) = CURRENT_DATE")
+    CheckElectives selectElectivesCheck(Integer userId);
+    @Update("update users set experience=experience+5.0 where id=#{userId}")
+    void updateExperienceByElectives(Integer userId);
+
 }

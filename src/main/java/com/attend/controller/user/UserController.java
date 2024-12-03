@@ -157,9 +157,7 @@ public class UserController {
 
         return Result.success(build);
     }
-    /**
-     * 排名
-     */
+
     @ApiOperation("获取全部排名")
     @GetMapping("/GetRanking/{id}")
     public Result<AllRankingVO> getExperence(@PathVariable Long id) {
@@ -194,7 +192,14 @@ public class UserController {
         return Result.success(allRankingVO);
     }
 
+    @ApiOperation("选修课签到")
+    @PostMapping("/xuanxiukeCheck")
+    public Result<String> xuanxiukeCheck(@RequestBody XuanxiukeCheckByDTO xuanxiukeCheckByDTO) {
+        log.info("用户{}",xuanxiukeCheckByDTO);
+        userService.insertElectivesCheck(xuanxiukeCheckByDTO);
 
+        return Result.success("打卡成功");
+    }
 
 
 }

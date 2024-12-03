@@ -3,6 +3,7 @@ package com.attend.mapper;
 
 import com.attend.dto.user.UserRegisterDTO;
 import com.attend.dto.user.UserUpdateDTO;
+import com.attend.dto.user.XuanxiukeCheckByDTO;
 import com.attend.entity.Check;
 import com.attend.entity.User;
 import org.apache.ibatis.annotations.*;
@@ -82,6 +83,10 @@ import java.util.List;
 //}
 @Mapper
 public interface UserMapper {
+
+
+
+
     @Select("select * from users where openid=#{openid}")
     User getByOpenid(String openid);
 
@@ -148,5 +153,6 @@ public interface UserMapper {
     List<User> selectUserRank();
     @Update("update checks set experience=#{v} where id=#{id}")
     void updateJingyan(double v, Integer id);
-
+    @Insert("insert into check_electives(user_id, location, image,check_time) values (#{userId},#{location},#{image},now())")
+    void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO);
 }

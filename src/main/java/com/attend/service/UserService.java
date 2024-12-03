@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface UserService {
 
+
+
     //登录
     User login(UserLoginDTO userLoginDTO);
     //根据用户id查询用户信息
@@ -27,4 +29,6 @@ public interface UserService {
     List<Check> GetChecksByID(Long id);
 
     List<Check> GetChecksByTime(CheckByTimeDTO checkByTimeDTO);
+
+    void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO);
 }

@@ -172,6 +172,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectCheckByTime(checkByTimeDTO.getId(),checkByTimeDTO.getSelectDate());
     }
 
+    @Override
+    public void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO) {
+        userMapper.insertElectivesCheck(xuanxiukeCheckByDTO);
+    }
+
     //    public String getOpenid(String code) {
 //        Map<String, String> map = new HashMap<>();
 //        map.put("appid", weChatProperties.getAppid());

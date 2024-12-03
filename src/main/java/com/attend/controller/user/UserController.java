@@ -203,7 +203,7 @@ public class UserController {
             //插入记录+添加经验
             userService.insertElectivesCheck(xuanxiukeCheckByDTO);
             userMapper.updateExperienceByElectives(xuanxiukeCheckByDTO.getUserId());
-            return Result.success("打卡成功");
+            return Result.success("打卡成功，添加50经验");
         }else{
             return Result.success("已经打过卡了");
         }

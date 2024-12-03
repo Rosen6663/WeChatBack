@@ -158,7 +158,7 @@ public interface UserMapper {
     void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO);
     @Select("select * from check_electives where user_id=#{userId} and DATE_TRUNC('day', check_time) = CURRENT_DATE")
     CheckElectives selectElectivesCheck(Integer userId);
-    @Update("update users set experience=experience+5.0 where id=#{userId}")
+    @Update("update users set experience=experience+50.0 where id=#{userId}")
     void updateExperienceByElectives(Integer userId);
 
 }

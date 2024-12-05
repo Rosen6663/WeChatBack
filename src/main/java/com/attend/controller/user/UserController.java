@@ -204,7 +204,7 @@ public class UserController {
             userService.insertElectivesCheck(xuanxiukeCheckByDTO);
             userMapper.updateExperienceByElectives(xuanxiukeCheckByDTO.getUserId());
             return Result.success("打卡成功，添加50经验");
-        }else{
+        } else{
             return Result.success("已经打过卡了");
         }
 

@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController("AdminLoginController")
 @RequestMapping("/api/admin/admin")
 @Slf4j
-@CrossOrigin
+//@CrossOrigin
 @Api(tags = "小队长相关接口")
 public class LoginController {
     @Autowired

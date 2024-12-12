@@ -61,6 +61,25 @@ public class UserController {
         log.info("返回:{}",userLoginVO);
         return Result.success(userLoginVO);
     }
+
+
+    @PostMapping("/phone/login")
+    @ApiOperation("手机登录")
+    public Result<UserLoginVO> login(@RequestBody UserPhoneLoginDTO userPhoneLoginDTO) {
+        log.info("手机号登录：{}", userPhoneLoginDTO);
+        User user = userService.loginPhone(userPhoneLoginDTO);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put(JwtClaimsConstant.USER_ID, user.getId());
+        String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
+        UserLoginVO userLoginVO = UserLoginVO.builder()
+                .id(user.getId())
+                .openid(user.getOpenid())
+                .token(token)
+                .build();
+        log.info("返回:{}",userLoginVO);
+        return Result.success(userLoginVO);
+    }
+
     @PostMapping("/logout")
     @ApiOperation("退出登录")
     public Result<String> logout() {

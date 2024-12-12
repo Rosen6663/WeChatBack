@@ -177,6 +177,13 @@ public class UserServiceImpl implements UserService {
         userMapper.insertElectivesCheck(xuanxiukeCheckByDTO);
     }
 
+    @Override
+    public User loginPhone(UserPhoneLoginDTO userPhoneLoginDTO) {
+
+        User  user= userMapper.loginOnphone(userPhoneLoginDTO);
+        return user;
+    }
+
     //    public String getOpenid(String code) {
 //        Map<String, String> map = new HashMap<>();
 //        map.put("appid", weChatProperties.getAppid());

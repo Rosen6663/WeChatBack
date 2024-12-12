@@ -31,4 +31,6 @@ public interface UserService {
     List<Check> GetChecksByTime(CheckByTimeDTO checkByTimeDTO);
 
     void insertElectivesCheck(XuanxiukeCheckByDTO xuanxiukeCheckByDTO);
+
+    User loginPhone(UserPhoneLoginDTO userPhoneLoginDTO);
 }

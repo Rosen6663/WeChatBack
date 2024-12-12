@@ -22,8 +22,8 @@ import java.util.List;
 @RequestMapping("/api/admin/leader")
 @Slf4j
 @Api(tags = "小队长相关接口")
-@CrossOrigin
-public class AdminController {
+//@CrossOrigin
+public class leaderController {
 
     @Autowired
     private LeaderMapper leaderMapper;

@@ -1,6 +1,7 @@
 package com.attend.mapper;
 
 
+import com.attend.dto.user.UserPhoneLoginDTO;
 import com.attend.dto.user.UserRegisterDTO;
 import com.attend.dto.user.UserUpdateDTO;
 import com.attend.dto.user.XuanxiukeCheckByDTO;
@@ -160,5 +161,6 @@ public interface UserMapper {
     CheckElectives selectElectivesCheck(Integer userId);
     @Update("update users set experience=experience+50.0 where id=#{userId}")
     void updateExperienceByElectives(Integer userId);
-
+    @Select("select *from users where telephone=#{telephone} and password=#{password}")
+    User loginOnphone(UserPhoneLoginDTO userPhoneLoginDTO);
 }

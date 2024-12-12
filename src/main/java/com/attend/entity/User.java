@@ -30,4 +30,6 @@ public class User implements Serializable {
     private String telephone;
 
     private Integer Integral;
+
+    private String password;
 }
